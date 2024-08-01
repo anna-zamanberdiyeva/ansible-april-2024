@@ -1,0 +1,39 @@
+---
+- name: Create users and groups
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Create users
+      user: 
+        name: "{{ item }}"
+        state: present
+      with_items: 
+        - anna
+        - tim
+        - ann
+
+    - name: Create groups
+      group:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - devops
+        - qa
+
+    - name: Add anna to devops group
+      user:
+        name: <your_name>
+        groups: devops
+        append: yes
+
+    - name: Add tim to qa group
+      user:
+        name: tim
+        groups: qa
+        append: yes
+
+    - name: Add ann to qa group
+      user:
+        name: ann
+        groups: qa
+        append: yes
