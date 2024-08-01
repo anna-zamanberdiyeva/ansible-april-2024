@@ -1,0 +1,99 @@
+- hosts: all
+  become: yes
+  tasks:
+
+  - name: Update apt package
+    apt:
+      update_cache: yes
+
+  - name: Install unzip
+    apt:
+      name: unzip
+      state: present
+
+  - name: Install MariaDB
+    apt:
+      name: mariadb-server
+      state: present
+  
+  - name: Start and enable MariaDB
+    service:
+      name: mariadb
+      state: started
+      enabled: yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ---
+# - hosts: all
+#   become: yes
+#   tasks:
+#   - name: Install mariadb  
+#     apt:
+#       name: mariadb
+#       state: present
+#       update_cache: yes
+      
+#   - name: Install unzip 
+#     apt:
+#       name: unzip
+#       state: latest
+
+#   - name: Install unzip 
+#     apt:
+#       name: unzip
+#       state: latest
+
+#   - name: Stop service
+#     ansible.builtin.service:
+#       name: mariadb
+#       state: stopped
+
+#   - name: Start service mariadb, if not started
+#     ansible.builtin.service:
+#       name: mariadb
+#       state: started
+#       enabled: yes
+
+
+
+# - name: Install mariadb
+#   hosts: all
+#   become: yes
+#   tasks:
+#     - name: Install unzip package
+#       apt:
+#         name: unzip
+#         state: present
+#         update_cache: yes
+
+#     - name: Install mariadb and mariadb server
+#       apt:
+#         name:
+#           - mariadb-server
+#           - mariadb-client
+#         state: present
+#         update_cache: yes
+
+#     - name: Start mariadb service
+#       service:
+#         name: mariadb
+#         state: started
+#         enabled: yes
+
