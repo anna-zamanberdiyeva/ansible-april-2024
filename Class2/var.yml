@@ -1,0 +1,17 @@
+- hosts: all
+  vars: 
+    name: kaizen
+    age: 20
+  become: yes
+  tasks:
+  - debug: msg="Hello {{ name }}, you are {{ age }}"
+
+
+#  playbook command:
+#  ansible-playbook -i hosts var.yml (any.yml)
+
+# overriding variables command 1: 
+# ansible-playbook -i hosts var.yml --extra-vars=name=world --extra-var=age=30
+
+# overriding variables command 2: 
+# ansible-playbook -i hosts var.yml -e "name=jerry age=25"
