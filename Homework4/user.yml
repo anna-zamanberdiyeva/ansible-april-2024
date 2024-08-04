@@ -1,0 +1,16 @@
+- hosts: all
+  become: yes
+  tasks: 
+  - name: create users
+    ansible.builtin.user:
+      name: "{{ item }}"
+      state: present
+    loop: 
+      - tim
+
+  - name: create group devops
+    ansible.builtin.group:
+      name: "{{ item }}"
+      state: present
+    loop: 
+      - devops
